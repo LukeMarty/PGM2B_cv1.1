@@ -15,18 +15,34 @@
     <button @onclick="Podil" class="btn btn-success">Podíl (/)</button>
 </div>
 <label>Výsledek: <input @bind-value="vysledek" readonly /></label>
+<hr />
+<label>
+    <input type="checkbox" @bind-value="kontrolaPreteceni"/> 
+    Kontrola přetečení
+</label>
 
 @code {
     private short cislo1;
     private short cislo2;
     private short vysledek;
+    private bool kontrolaPreteceni;
 
     /// <summary>
     /// Tato metoda sečte dvě čísla.
     /// </summary>
     private void Soucet()
     {
-        vysledek = (short)(cislo1 + cislo2);
+        if(kontrolaPreteceni)
+        {
+            checked
+            {
+                vysledek = (short)(cislo1 + cislo2);
+            }
+        }
+        else
+        {
+            vysledek = (short)(cislo1 + cislo2);
+        }
     }
 
     /// <summary>
